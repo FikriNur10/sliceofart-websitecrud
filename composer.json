@@ -12,6 +12,9 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.8",
         "laravel/tinker": "^2.7",
+        "laravel/ui": "^4.2",
+        "munafio/chatify": "^1.6",
+        "realrashid/sweet-alert": "^7.0",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

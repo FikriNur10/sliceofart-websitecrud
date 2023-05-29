@@ -6,15 +6,58 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        <x-application-logo class="block h-2 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    
+                    {{-- Artist login Dashboard--}}
+                    @if(Auth::user()->roles == 'artist')
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Dashboard') }}  {{ Auth::user()->roles }}
                     </x-nav-link>
+                    <x-nav-link :href="route('addproduct')" :active="request()->routeIs('addproduct')">
+                        {{ __('Add my work') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('showproduct')" :active="request()->routeIs('showproduct')">
+                        {{ __('My Works') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('printondemand')" :active="request()->routeIs('printondemand')">
+                        {{ __('Print on Demand') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('payment')" :active="request()->routeIs('payment')">
+                        {{ __('Payment') }}
+                    </x-nav-link>
+                    @endif
+
+                    {{-- Buyer Login Dashboard --}}
+                    @if(Auth::user()->roles == 'buyer')
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}  {{ Auth::user()->roles }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('buyerpaymentlist')" :active="request()->routeIs('buyerpaymentlist')">
+                        {{ __('Payment List') }}
+                    </x-nav-link>
+                    
+                    @endif
+                    
+                    {{-- Admin login dashboard --}}
+                    @if(Auth::user()->roles == 'admin')
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}  {{ Auth::user()->roles }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('showproductAdmin')" :active="request()->routeIs('showproductAdmin')">
+                        {{ __('Artist Data') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('adminUserdata')" :active="request()->routeIs('adminUserdata')">
+                        {{ __('User Data') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('paymentlist')" :active="request()->routeIs('paymentlist')">
+                        {{ __('Payment List') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

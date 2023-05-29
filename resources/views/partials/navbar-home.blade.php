@@ -46,7 +46,7 @@
                         <div class="modal">
                             <div class="modal-box relative">
                                 <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                                    <h3 class="text-lg font-bold pb-5 text-white">Who you are?</h3>
+                                    <h3 class="text-lg font-bold pb-5 text-white text-center">Sign up or Login</h3>
                                 <div class="flex flex-col space-y-2">
                                     <button value="Click" type="button" onclick="window.location.href='{{ route('register') }}'" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg text-white">Sign up</button>
                                     <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg text-white" value="Click" type="button" onclick="window.location.href='{{ route('login') }}'">Login</button>

@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  @vite('./resources/css/app.css')
-  @vite('./resources/js/app.js')
-  {{-- Backup link --}}
-  <script type="module" src="./resources/js/app.js"></script>
-  <script type="module" src="./resources/css/app.css"></script>
+  
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+
   <title>{{ $title }} | SOA</title>
 
 
 </head>
   <body>
+    {{-- floating button --}}
+    <button title="Chat" onclick="window.location.href='{{ route(config('chatify.routes.prefix')) }}'"
+    class="fixed z-40 pb-3 bottom-10 right-8 bg-gray-800 w-20 h-20 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-gray-500 hover:drop-shadow-2xl duration-300">&#9993;</button>
     {{-- Navbar --}}
     <nav>
       @include('partials.navbar-home')

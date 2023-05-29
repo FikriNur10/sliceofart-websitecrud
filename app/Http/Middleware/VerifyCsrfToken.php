@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        '/update/{transaction_code}', // routes group
+        'specific-route', // specific route
     ];
 }
