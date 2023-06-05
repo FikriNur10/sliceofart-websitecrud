@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('name_artist'); // nanti diisi sama nama artist
             $table->string('name_buyer'); // nanti diisi sama nama buyer
             $table->bigInteger('price'); // nanti diisi sama harga produk
-            $table->boolean('confirmed'); // nanti diisi sama true atau false
+            $table->boolean('payment_status'); // nanti diisi sama true atau false
+            $table->boolean('confirm_status');
             $table->timestamps();
 
         });

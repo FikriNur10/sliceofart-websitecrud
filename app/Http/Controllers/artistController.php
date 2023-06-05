@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\paymentModel;
+use App\Models\productModel;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
@@ -18,7 +19,8 @@ class artistController extends Controller
             'name_artist' => $request->name_artist,
             'name_buyer' => $request->name_buyer,
             'price' => $request->price,
-            'confirmed' => '0',
+            'payment_status' => '0',
+            'confirm_status' => '0',
         ]);
         Alert::success('Payment Succes', 'Payment Succes');
 
@@ -38,11 +40,26 @@ class artistController extends Controller
         // return view('artist.paymentData',compact(['data']));
     }
 
+    public function ShowPaymentCodeData($code)
+    {
+        $data = paymentModel::all()->where("transaction_code", $code);
+        return view('artist.paymentData',compact(['data']));
+    }
+
     public function paymentList()
     {
         $randomString = Str::random(7);
-        $userName = Auth::user()->name;
-        $data = paymentModel::all()->where("name_artist", $userName);
-        return view('artist.payment',compact(['data','randomString']));
+        $username = Auth::user()->username;
+        $nama = Auth::user()->name;
+        $data = paymentModel::all()->where("name_artist", $nama);
+        $product_code = productModel::all()->where("username", $username);
+        return view('artist.payment',compact(['data','randomString','product_code']));
     }
+
+    public function showProductCode($username)
+    {
+        $data = productModel::all()->where("username", $username);
+        return view('artist.paymentData',compact(['data']));
+    }
+
 }

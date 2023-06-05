@@ -30,7 +30,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            @foreach ($data as $item)
+                            @foreach($data as $item)
                             <tr class="hover">
                               <th class="text-gray-900">{{ $loop->iteration }}</th>
                               <td class="text-gray-900">{{ $item ->name}}</td>
@@ -38,9 +38,13 @@
                               <td class="text-gray-900">{{ $item ->email}}</td>
                               <td class="text-gray-900">{{ $item ->roles}}</td>
                               <td>
-                                <a href="" type="button" class="btn rounded-full bg-green-700 border-0">Update</a>
-                                <a href="/delete/{{ $item -> username }}" type="button" class="btn rounded-full bg-red-700 border-0">Delete</a>
-                              </td>
+                                <a href="/userdata/{{$item->id}}/edit" type="button" class="btn rounded-full bg-green-700 border-0">Update</a>
+                                <form action="/delete/user/{{ $item ->id}}" method="post" class="inline-block">
+                                  @method('delete')
+                                  @csrf
+                                  <button type="submit" class="btn rounded-full bg-red-700 border-0">Delete</button>                                </form>
+                                </form>
+                                </td>
                               @endforeach
                           </tbody>
                         </table>

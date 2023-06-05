@@ -34,7 +34,8 @@ class buyerController extends Controller
             'name_artist' => $request->name_artist,
             'name_buyer' => $request->name_buyer,
             'price' => $request->price,
-            'confirmed' => 1,
+            'payment_status' => 1,
+            'confirm_status' => 0,
         ]);
         $data->update();
         // dd($user_transaction_list);
@@ -42,8 +43,29 @@ class buyerController extends Controller
         return redirect('/dashboard/buyerpaymentlist');
         
     }
+    public function confirmUpdate(Request $request,$transaction_code)
+    {
+        $data = paymentModel::find($transaction_code);
+        $data->fill([
+            'confirm_status' => 1,
+        ]);
+        $data->update();
+        // dd($user_transaction_list);
+        Alert::success('Confirm Success', 'Succes');
+        return redirect('/dashboard/buyerpaymentlist');
+        
+    }
+    // alert
     public function paymentFinishAlert() {
-        Alert::warning('Payment has ben', 'Payment Succes');
+        Alert::warning('Payment Error', 'You already have a payment');
+        return redirect('/dashboard/buyerpaymentlist');
+    }
+    public function confirmFinishAlert() {
+        Alert::warning('Confirm Failed', 'Your payment is not finish');
+        return redirect('/dashboard/buyerpaymentlist');
+    }
+    public function confirmErrorAlert() {
+        Alert::warning('Confirm Failed', 'You Has been Confirmed');
         return redirect('/dashboard/buyerpaymentlist');
     }
     

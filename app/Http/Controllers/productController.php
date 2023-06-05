@@ -29,17 +29,26 @@ class productController extends Controller
 
     public function store(Request $request)
     {
-       
+        $validatedData = $request->validate([
+            'username' => 'required',
+            'code_product' => 'required|unique:product',
+            'name' => 'required',
+            'price' => 'required',
+            'numberRevision' => 'required',
+            'category' => 'required',
+            'description' => 'required',
+            'image_product' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+        ]);
         
-        $data = productModel::create($request->all());
         if($request ->hasFile('image_product')){
+            $validatedData['image_product'] = $request -> file('image_product') -> getClientOriginalName();
             $request -> file('image_product') -> move('productsImage/',$request -> file('image_product') -> getClientOriginalName());
-            $data -> image_product = $request -> file('image_product') -> getClientOriginalName();
-            $data -> save();
         }
+        $data = productModel::create($validatedData);
 
-        Alert::success('Success Title', 'Success Message');
-        return redirect('/dashboard');
+        Alert::success('Success', 'Success adding product');
+        return redirect('/dashboard/works');
+
         
     }
 
@@ -76,6 +85,24 @@ class productController extends Controller
         return view('productdetail',compact(['products','user']),
         ['title'=>'Product Detail']);
         
+    }
+    public function editProduct($code_product)
+    {
+        $products = productModel::findOrFail($code_product);
+        return view('artist.updateArt',compact(['products']),
+        ['title'=>'Edit Product']);
+    }
+    public function updateProduct(Request $request, $code_product)
+    {
+        $products = productModel::findOrFail($code_product);
+        $products->update($request->all());
+        if($request ->hasFile('image_product')){
+            $request -> file('image_product') -> move('productsImage/',$request -> file('image_product') -> getClientOriginalName());
+            $products -> image_product = $request -> file('image_product') -> getClientOriginalName();
+            $products -> save();
+        }
+        Alert::success('Update Success', 'Update Success');
+        return redirect('/dashboard/works');
     }
     
     

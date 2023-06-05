@@ -39,7 +39,7 @@
                                 <img src="{{ asset('productsImage/'.$item ->image_product)}}"/>
                               </td>
                               <td>
-                                <a href="" type="button" class="btn rounded-full bg-green-700">Update</a>
+                                <a href="/dashboard/update/{{ $item -> code_product }}" type="button" class="btn rounded-full bg-green-700">Update</a>
                                 <a href="/delete/{{ $item -> code_product }}" type="button" class="btn rounded-full bg-red-700">Delete</a>
                               </td>
                             </tr>

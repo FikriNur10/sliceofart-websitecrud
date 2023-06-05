@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_transaction_list', function(Blueprint $table){
+        Schema::create('user_print_list', function(Blueprint $table){
 
             $table->increments('transaction_id');
             $table->string('transaction_code'); // nanti diisi sama random string

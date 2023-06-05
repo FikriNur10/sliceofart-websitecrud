@@ -20,7 +20,8 @@
                                 <th>Name Artist</th>
                                 <th>Name Buyer</th>
                                 <th>Price</th>
-                                <th>Status</th>
+                                <th>Payment Status</th>
+                                <th>Order Status</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -33,11 +34,17 @@
                                   <td>{{ $payment->name_artist}}</td>
                                   <td>{{ $payment->name_buyer}}</td>
                                   <td>{{ $payment->price}}</td>
-                                  @if($payment->confirmed == FALSE)
-                                  <td>Pending</td>
-                                  @elseif($payment->confirmed == TRUE)
-                                  <td>Succes</td>
-                                  @endif
+                                  @if($payment->payment_status == FALSE)
+                                    <td>Pending</td>
+                                @elseif($payment->payment_status == TRUE)
+                                    <td>Succes</td>
+                                @endif
+                                @if($payment->confirm_status == FALSE)
+                                    <td>On Progress</td>
+                                @elseif($payment->confirm_status == TRUE)
+                                    <td>Completed</td>
+                                @endif
+                                  
                               </tr>
                               @endforeach
                             </tbody>

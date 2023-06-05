@@ -24,9 +24,6 @@
                     <x-nav-link :href="route('showproduct')" :active="request()->routeIs('showproduct')">
                         {{ __('My Works') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('printondemand')" :active="request()->routeIs('printondemand')">
-                        {{ __('Print on Demand') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('payment')" :active="request()->routeIs('payment')">
                         {{ __('Payment') }}
                     </x-nav-link>

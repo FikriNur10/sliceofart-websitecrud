@@ -16,6 +16,7 @@
                             <tr>
                               <th>#</th>
                               <th>Code</th>
+                              <th>Username</th>
                               <th>Name</th>
                               <th>Price</th>
                               <th>Decsription</th>
@@ -31,6 +32,7 @@
                             <tr class="hover">
                               <th class="text-gray-900">{{ $loop->iteration }}</th>
                               <td class="text-gray-900">{{ $item ->code_product}}</td>
+                              <td class="text-gray-900">{{ $item ->username}}</td>
                               <td class="text-gray-900">{{ $item ->name}}</td>
                               <td class="text-gray-900">Rp.{{ $item ->price}}</td>
                               <td class="text-gray-900">{{ $item ->description}}</td>
@@ -39,7 +41,7 @@
                                 <img src="{{ asset('productsImage/'.$item ->image_product)}}"/>
                               </td>
                               <td>
-                                <a href="" type="button" class="btn rounded-full bg-green-700">Update</a>
+                                <a href="/dashboard/update/{{ $item -> code_product }}" type="button" class="btn rounded-full bg-green-700">Update</a>
                                 <a href="/delete/{{ $item -> code_product }}" type="button" class="btn rounded-full bg-red-700">Delete</a>
                               </td>
                             </tr>

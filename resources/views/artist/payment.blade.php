@@ -23,8 +23,12 @@
                         </div>
                         {{-- Code Product --}}
                         <div class="pb-3">
-                            <label for="numberRevision" class="block text-gray-700 text-sm font-bold mb-2">Code Product</label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded-md py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="code_product" id="code_product" placeholder="Code Product">
+                            <label for="code_product" class="block text-black text-sm font-bold mb-2">Code Product</label>
+                                <select  name="code_product" class="form-control w-full mt-1 rounded-md text-black ">
+                                    @foreach($product_code as $code)
+                                    <option class="text-black" name="code_product" type="option" id="code_product" value="{{$code->code_product}}" required>{{$code->code_product}} ({{$code->name}})</option>
+                                    @endforeach
+                                </select>                          
                         </div>
                         {{-- Name Artist --}}
                         <div class="pb-3">
@@ -34,12 +38,12 @@
                         {{-- Name Buyer --}}
                         <div class="pb-3">
                             <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Name Buyer</label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded-md py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="name_buyer" id="name_buyer" placeholder="Name Buyer">
+                            <input class="appearance-none block w-full bg-white text-gray-700 border  rounded-md py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="name_buyer" id="name_buyer" placeholder="Name Buyer">
                         </div>
                         {{-- Price --}}
-                        <div class="pb-3">
+                        <div class="">
                             <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Price</label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded-md py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" name="price" id="price" placeholder="price">
+                            <input class="appearance-none block w-full bg-white text-gray-700 border  rounded-md py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" name="price" id="price" placeholder="price">
                         </div>
                         <div class="pt-3 pb-3">
                             <button type="submit" class="bg-gray-800 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-md">
@@ -53,10 +57,10 @@
     </div>
     {{-- add payment end --}}
     {{-- table payment --}}
-    <div class="h-20 w-screen px-24 py-6 overflow-hidden bg-white font-bold text-xl drop-shadow-md mb-6">
+    <div class="h-20 w-full px-24 py-6 overflow-hidden bg-white font-bold text-xl drop-shadow-md mb-6">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">Payment List</h2>
     </div>
-    <div class="py-2">
+    <div class="py-2 pb-16">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -72,7 +76,8 @@
                               <th>Name Artist</th>
                               <th>Name Buyer</th>
                               <th>Price</th>
-                              <th>Status</th>
+                              <th>Payment Status</th>
+                              <th>Confirm Status</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -85,10 +90,15 @@
                                 <td>{{ $payment->name_artist}}</td>
                                 <td>{{ $payment->name_buyer}}</td>
                                 <td>{{ $payment->price}}</td>
-                                @if($payment->confirmed == FALSE)
+                                @if($payment->payment_status == FALSE)
                                 <td>Pending</td>
-                                @elseif($payment->confirmed == TRUE)
+                                @elseif($payment->payment_status == TRUE)
                                 <td>Succes</td>
+                                @endif
+                                @if($payment->confirm_status == FALSE)
+                                <td>Waiting</td>
+                                @elseif($payment->confirm_status == TRUE)
+                                <td>Cofirmed</td>
                                 @endif
                             </tr>
                             @endforeach

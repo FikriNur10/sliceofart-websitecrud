@@ -27,16 +27,16 @@
                 <p class="cursor-pointer hover:underline duration-100 font-normal text-base leading-4 text-gray-800">Showing {{ count($products)}} products</p>
             </div>
     </div>
-    <section class="w-full h-screen">
+    <section class="w-full h-full">
       <!-- ✅ Grid Section - Starts Here 👇 -->
-      <div class="w-fit grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-y-20 gap-x-14 px-20 py-20">
+      <div class="w-fit grid grid-cols-1 lg:grid-cols-4 md:grid-cols-5 gap-y-20 gap-x-14 px-20 py-20">
           <!--   ✅ Product card 1 - Starts Here 👇 -->
           @foreach ($products as $product)
-      <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+      <div class="w-82 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
           <a href="/browse/{{$product ->code_product}}">
               <img src="{{ asset('productsImage/'.$product ->image_product)}}" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
               <div class="px-4 py-3 w-72">
-              <span class="text-gray-400 mr-3 uppercase text-xs">{{$product->category}}</span>
+              <span class="text-gray-400 mr-3 uppercase text-xs">{{$product->username}}</span>
               <p class="text-lg font-bold text-black truncate block capitalize">{{ $product->name}}</p>
               <div class="flex items-center">
                   <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.{{ $product->price}}</p>                 
@@ -52,9 +52,5 @@
   </div>
     </section>
       
-    {{-- Footer --}}
-    {{-- <footer class="pt-16">
-      @include('partials.footer')
-    </footer> --}}
   </body>
 </html>

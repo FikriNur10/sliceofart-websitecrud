@@ -51,6 +51,12 @@ Route::get('/browse/{code_product}',[productController::class,'showProductdetail
 Route::get('/dashboard/payment',[artistController::class,'paymentList'])->middleware(['auth'])->name('payment');
 Route::post('/dashboard/payment',[artistController::class,'paymentStore'])->middleware(['auth'])->name('paymentPost');
 
+// make route for go to updateArtistProduct page
+Route::get('/dashboard/update/{code_product}',[productController::class,'editProduct'], function(){
+    return view('artist.updateArt');
+})->middleware(['auth'])->name('updateProduct');
+Route::post('/dashboard/update/submit/{code_product}',[productController::class,'updateProduct'])->middleware(['auth'])->name('updateProductPost');
+
 
 // Buyer ROUTE
 Route::get('dashboard/tracking',function () {
@@ -59,9 +65,13 @@ Route::get('dashboard/tracking',function () {
 
 Route::get('dashboard/buyerpaymentlist',[buyerController::class,'showBuyerPayment'])->middleware(['auth'])->name('buyerpaymentlist');
 Route::get('dashboard/paymentwarning',[buyerController::class,'paymentFinishAlert'])->middleware(['auth']);
+Route::get('dashboard/confirmwarning',[buyerController::class,'confirmFinishAlert'])->middleware(['auth']);
+Route::get('dashboard/confirmtrue',[buyerController::class,'confirmErrorAlert'])->middleware(['auth']);
 
-Route::get('dashboard/buyerpaymentlist/{transaction_code}/confirm',[buyerController::class,'showBuyerPaymentDetail'])->middleware(['auth'])->name('buyerpaymentlistdetail');
+
+Route::get('dashboard/buyerpaymentlist/{transaction_code}/pay',[buyerController::class,'showBuyerPaymentDetail'])->middleware(['auth'])->name('buyerpaymentlistdetail');
 Route::put('/update/{transaction_code}',[buyerController::class,'paymentUpdate'])->middleware(['auth'])->name('confirmPayment');
+Route::get('/update/confirmstatus/{transaction_code}',[buyerController::class,'ConfirmUpdate'])->middleware(['auth'])->name('confirmPayment');
 
 
 
@@ -78,11 +88,15 @@ Route::get('dashboard/admindata', [adminController::class,'showDataproduct'],fun
     return view('showproductadmin');
 })->middleware(['auth'])->name('showproductAdmin');
 
-// admin and artist
-Route::get('dashboard/printondemand',function () {
-    return view('printOnDemand');
-})->middleware(['auth'])->name('printondemand');
+//make me route for delete user by id
+Route::delete('delete/user/{id}',[adminController::class,'destroy'])->middleware(['auth'])->name('deleteUser');
 
+// route for edit user
+Route::get('userdata/{id}/edit',[adminController::class,'editUser'])->middleware(['auth'])->name('editUser');
+// make route for sendeditUserData
+Route::put('userdata/{id}/update',[adminController::class,'sendeditUserData'])->middleware(['auth'])->name('updateUser');
+
+// admin and artist
 Route::get('dashboard/works', [productController::class,'index'],function () {
     return view('showproduct');
 })->middleware(['auth'])->name('showproduct');

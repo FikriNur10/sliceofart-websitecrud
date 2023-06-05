@@ -20,10 +20,7 @@
                             <a href="javascript:void(0)" class="dark:hover:text-gray-1000 text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"> Seller </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" class="dark:hover:text-gray-1000 text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"> Buyer </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="dark:hover:text-gray-1000 text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"> Contact us </a>
+                            <a href="/chat/1" class="dark:hover:text-gray-1000 text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"> Contact us </a>
                         </li>
                     </ul>
                 </div>
@@ -36,9 +33,6 @@
                             <a aria-label="Favourites" href="javascript:void(0)" class="focus:outline-none focus:ring-2 focus:ring-gray-800 hover:bg-gray-100 p-0.5 rounded">
                                 <img class="" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-III-svg3.svg" alt="Favourites">
                             </a>
-                            <a aria-label="Bag" href="javascript:void(0)" class="focus:outline-none focus:ring-2 focus:ring-gray-800 hover:bg-gray-100 p-0.5 rounded">
-                                <img class="" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-III-svg4.svg" alt="bag">
-                        </a>
                         @else
                     <label for="my-modal-3" class="btn text-white">Get Started</label>
                     <!-- Put this part before </body> tag -->

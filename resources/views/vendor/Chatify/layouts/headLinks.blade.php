@@ -1,4 +1,4 @@
-<title>SOA | {{ config('chatify.name') }}</title>
+<title>{{ config('chatify.name') }}</title>
 
 {{-- Meta tags --}}
 <meta name="viewport" content="width=device-width, initial-scale=1">

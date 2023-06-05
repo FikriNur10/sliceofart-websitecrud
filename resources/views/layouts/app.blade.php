@@ -16,8 +16,8 @@
     <body class="font-sans antialiased">
         @include('sweetalert::alert')
         {{-- floating button --}}
-    <button title="Chat" onclick="window.location.href='{{ route(config('chatify.routes.prefix')) }}'"
-    class="fixed z-40 pb-2 bottom-10 right-8 bg-gray-800 w-20 h-20 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-gray-500 hover:drop-shadow-2xl duration-300">&#9993;</button>
+    {{-- <button title="Chat" onclick="window.location.href='{{ route(config('chatify.routes.prefix')) }}'"
+    class="fixed z-40 pb-2 bottom-10 right-8 bg-gray-800 w-20 h-20 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-gray-500 hover:drop-shadow-2xl duration-300">&#9993;</button> --}}
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
