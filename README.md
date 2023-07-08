@@ -7,9 +7,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About Slice of Art
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Slice of Art is an e-commerce platform engaged in art. In the context of e-commerce commission art, the name “Slice of Art” is a representation of the pieces of artwork available for sale on this platform. The name “Slice of Art” can be interpreted as a fragment of the larger world of art that is available for users to enjoy on this platform.
+
+The name can also reflect that this platform provides unique and original art products and works of art, so that every piece of art sold on the platform has its own uniqueness and artistic value. So from its name it is enough to explain that this platform provides a space for artists to be able to promote commission art services, namely where clients/customers can order artwork making services from an artist by requesting what kind of work they want.
+
+wLaravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
